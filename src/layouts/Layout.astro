@@ -1,4 +1,6 @@
 ---
+import { AstroFont } from "astro-font";
+
 interface Props {
   title: string;
 }
@@ -13,14 +15,43 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <AstroFont
+      config={[
+        {
+          src: [],
+          name: "Inter",
+          googleFontsURL:
+            "https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;1,400;1,700&display=swap",
+          preload: true,
+          display: "swap",
+          selector: "html",
+          fallback: "sans-serif",
+        },
+      ]}
+    />
   </head>
   <body>
     <slot />
+    <style is:global>
+      :root {
+        --text-color-accent: #e7ecf0;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        color: var(--text-color-accent);
+        scroll-behavior: smooth;
+        background: #13131a;
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-  }
-</style>
