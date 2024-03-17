@@ -1,4 +1,4 @@
-import { astroDb } from "@astrojs/db";
+import {} from "@astrojs/db";
 import bcrypt from "bcrypt";
 
 export async function POST({ request }) {
